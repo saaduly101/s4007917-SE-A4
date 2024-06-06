@@ -1,31 +1,15 @@
 package com.example.project;
 
-import java.io.File;
-
-import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class PostTest {
 
-    private final String postFilePath = "post.txt";
-    private final String commentFilePath = "comment.txt";
+    // private final String postFilePath = "post.txt";
+    // private final String commentFilePath = "comment.txt";
 
-    @BeforeEach
-    public void setUp() {
-        // Clean up files before each test
-        new File(postFilePath).delete();
-        new File(commentFilePath).delete();
-    }
 
-    @AfterEach
-    public void tearDown() {
-        // Clean up files after each test
-        new File(postFilePath).delete();
-        new File(commentFilePath).delete();
-    }
 
     @Test
     public void testAddPostInvalidTitle() {
@@ -85,7 +69,7 @@ public class PostTest {
     public void testAddPostInvalidTypeEmergency() {
         // Test case: Adding a post with an invalid type/emergency combination ('Easy' and 'Immediately Needed')
         String[] tags = {"java", "lorem", "ipsum"};
-        Post post = new Post(4, "Lorem Ipsum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet purus gravida quis blandit. Purus sit amet luctus venenatis lectus magna fringilla. Cursus risus at ultrices mi tempus imperdiet. It is based on several concepts including encapsulation, inheritance, and polymorphism.", tags, "Easy", "Immediately Needed");
+        Post post = new Post(4, "Lorem Ipsum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed tempus urna et pharetra pharetra massa massa ultricies. Integer malesuada nunc vel risus commodo. Risus ultricies tristique nulla aliquet enim tortor at auctor. Lectus mauris ultrices eros in cursus turpis massa. ", tags, "Easy", "Immediately Needed");
         boolean result = post.addPost();
         assertFalse(result, "Post with invalid type/emergency combination should not be added" + "\n");
     }
@@ -94,7 +78,7 @@ public class PostTest {
     public void testAddPostValidTypeEmergency() {
         // Test case: Adding a post with a valid type/emergency combination ('Difficult' and 'Immediately Needed')
         String[] tags = {"java", "lorem", "ipsum"};
-        Post post = new Post(4, "Lorem Ipsum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet purus gravida quis blandit. Purus sit amet luctus venenatis lectus magna fringilla. Cursus risus at ultrices mi tempus imperdiet. It is based on several concepts including encapsulation, inheritance, and polymorphism.", tags, "Difficult", "Immediately Needed");
+        Post post = new Post(4, "Lorem Ipsum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed tempus urna et pharetra pharetra massa massa ultricies. Integer malesuada nunc vel risus commodo. Risus ultricies tristique nulla aliquet enim tortor at auctor. Lectus mauris ultrices eros in cursus turpis massa. ", tags, "Difficult", "Immediately Needed");
         boolean result = post.addPost();
         assertTrue(result, "Post with valid type/emergency combination should be added" + "\n");
     }
@@ -103,7 +87,7 @@ public class PostTest {
     public void testAddPostInvalidTitle2() {
         // Test case: Adding a post with an invalid title (title too long)
         String[] tags = {"java", "lorem", "ipsum"};
-        Post post = new Post(5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet nisl purus in mollis nunc sed id. Accumsan tortor posuere ac ut consequat. Convallis convallis tellus id interdum velit laoreet id. Morbi tristique senectus et netus et. Interdum consectetur libero id faucibus nisl tincidunt eget nullam non.", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet purus gravida quis blandit. Purus sit amet luctus venenatis lectus magna fringilla. Cursus risus at ultrices mi tempus imperdiet.", tags, "Difficult", "Highly Needed");
+        Post post = new Post(5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet nisl purus in mollis nunc sed id. Accumsan tortor posuere ac ut consequat. Convallis convallis tellus id interdum velit laoreet id. Morbi tristique senectus et netus et. Interdum consectetur libero id faucibus nisl tincidunt eget nullam non.", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed tempus urna et pharetra pharetra massa massa ultricies. Integer malesuada nunc vel risus commodo. Risus ultricies tristique nulla aliquet enim tortor at auctor. Lectus mauris ultrices eros in cursus turpis massa.", tags, "Difficult", "Highly Needed");
         boolean result = post.addPost();
         assertFalse(result, "Post with invalid title should not be added" + "\n");
     }
@@ -161,7 +145,7 @@ public class PostTest {
     public void testAddCommentInvalidLengthLong() {
         // Test case: Adding a comment that is too long
         String[] tags = {"java", "lorem", "ipsum"};
-        Post post = new Post(9, "Lorem Ipsum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet purus gravida quis blandit. Purus sit amet luctus venenatis lectus magna fringilla. Cursus risus at ultrices mi tempus imperdiet.", tags, "Difficult", "Highly Needed");
+        Post post = new Post(9, "Lorem Ipsum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed tempus urna et pharetra pharetra massa massa ultricies. Integer malesuada nunc vel risus commodo. Risus ultricies tristique nulla aliquet enim tortor at auctor. Lectus mauris ultrices eros in cursus turpis massa.", tags, "Difficult", "Highly Needed");
         post.addPost();
 
         boolean result = post.addComment("This is an invalid comment, because it has too many words");
@@ -172,7 +156,7 @@ public class PostTest {
     public void testAddCommentInvalidNumberOfComments() {
         // Test case: Adding more than 5 comments to a non-easy post
         String[] tags = {"java", "lorem", "ipsum"};
-        Post post = new Post(10, "Lorem Ipsum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet purus gravida quis blandit. Purus sit amet luctus venenatis lectus magna fringilla. Cursus risus at ultrices mi tempus imperdiet.", tags, "Difficult", "Highly Needed");
+        Post post = new Post(10, "Lorem Ipsum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed tempus urna et pharetra pharetra massa massa ultricies. Integer malesuada nunc vel risus commodo. Risus ultricies tristique nulla aliquet enim tortor at auctor. Lectus mauris ultrices eros in cursus turpis massa.", tags, "Difficult", "Highly Needed");
         post.addPost();
         post.addComment("This is the first comment.");
         post.addComment("This is the second comment.");
