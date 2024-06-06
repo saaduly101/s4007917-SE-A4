@@ -1,4 +1,4 @@
-# s4007917-SE-A4
+# README
 
 JUnit 5 was used with the maven project template.
 
