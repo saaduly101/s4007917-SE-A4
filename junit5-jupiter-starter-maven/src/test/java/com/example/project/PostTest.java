@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 
 public class PostTest {
 
-    private final String postFilePath = "TXT_FILES/post.txt";
-    private final String commentFilePath = "TXT_FILES/comment.txt";
+    private final String postFilePath = "post.txt";
+    private final String commentFilePath = "comment.txt";
 
     @BeforeEach
     public void setUp() {
@@ -139,7 +139,7 @@ public class PostTest {
     public void testAddCommentInvalidLengthShort() {
         // Test case: Adding a comment that is too short
         String[] tags = {"java", "lorem", "ipsum"};
-        Post post = new Post(7, "Lorem Ipsum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet purus gravida quis blandit. Purus sit amet luctus venenatis lectus magna fringilla. Cursus risus at ultrices mi tempus imperdiet.", tags, "Difficult", "Highly Needed");
+        Post post = new Post(7, "Lorem Ipsum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices neque ornare aenean euismod elementum nisi quis eleifend quam. Pellentesque pulvinar pellentesque habitant morbi. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien et. Penatibus et magnis dis parturient montes nascetur ridiculus. Eget gravida cum sociis natoque penatibus et magnis dis parturient.", tags, "Difficult", "Highly Needed");
         post.addPost();
 
         boolean result = post.addComment("Hello");
@@ -150,7 +150,7 @@ public class PostTest {
     public void testAddCommentValidLength() {
         // Test case: Adding a valid comment
         String[] tags = {"java", "lorem", "ipsum"};
-        Post post = new Post(8, "Lorem Ipsum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet purus gravida quis blandit. Purus sit amet luctus venenatis lectus magna fringilla. Cursus risus at ultrices mi tempus imperdiet.", tags, "Difficult", "Highly Needed");
+        Post post = new Post(8, "Lorem Ipsum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices neque ornare aenean euismod elementum nisi quis eleifend quam. Pellentesque pulvinar pellentesque habitant morbi. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien et. Penatibus et magnis dis parturient montes nascetur ridiculus. Eget gravida cum sociis natoque penatibus et magnis dis parturient.", tags, "Difficult", "Highly Needed");
         post.addPost();
 
         boolean result = post.addComment("This is a valid comment");

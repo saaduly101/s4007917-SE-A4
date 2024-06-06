@@ -1,6 +1,8 @@
 package com.example.project;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,6 +32,13 @@ public class Post {
         this.postType = postType;
         this.postEmergency = postEmergency;
     }
+
+    Post(int postID, String postType, String postEmergency) {
+        this.postID = postID;
+        this.postType = postType;
+        this.postEmergency = postEmergency;
+    }
+    
 
     // Method to add a post after validation
     public boolean addPost() {
@@ -138,11 +147,11 @@ public class Post {
             return false;
         }
 
-        // if (!postExists(this.postID)) {
-        //     System.out.println("Post ID does not exist.");
-        //     // System.out.println(this.postID);
-        //     return false;
-        // }
+        if (!postExists(this.postID)) {
+            System.out.println("Post ID does not exist.");
+            // System.out.println(this.postID);
+            return false;
+        }
 
         postComments.add(comment);
 
@@ -176,24 +185,33 @@ public class Post {
         return true;
     }
 
-        // private boolean postExists(int postID) {
-    //     try (BufferedReader reader = new BufferedReader(new FileReader("post.txt"))) {
-    //         String line;
-    //         while ((line = reader.readLine()) != null) {
-    //             if (line.contains("Post ID: " + postID)) {
-    //                 return true;
-    //             }
-    //         }
-    //     } catch (IOException e) {
-    //         e.printStackTrace();
-    //     }
-    //     return false;
-    // }
+        private boolean postExists(int postID) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("post.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.contains("Post ID: " + postID)) {
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     // String representation of a post
     @Override
     public String toString() {
         return "Post ID: " + postID + ", Title: " + postTitle + ", Body: " + postBody + ", Tags: " 
         + String.join(", ", postTags) + ", Type: " + postType + ", Emergency: " + postEmergency;
+    }
+
+
+    public int getpostID() {
+       return this.postID;
+    }
+
+    String getPostType() {
+        return this.postType;
     }
 }
